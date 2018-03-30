@@ -9,8 +9,8 @@ public class DayCalculate {
 	public DayCalculate(){
 		mon = 0;
 		// 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 
-		// 0  闰年		       0   平年
-		arr = new int[]{0,31,29,31,30,31,30,31,31,30,31,30,0,31,28,31,30,31,30,31,31,30,31,30,31};
+		// 0  闰年							 1   平年
+		arr = new int[]{0,31,29,31,30,31,30,31,31,30,31,30,31,0,31,28,31,30,31,30,31,31,30,31,30,31};
 	}
 	
 	public void isLeap(){
@@ -37,7 +37,7 @@ public class DayCalculate {
 	public void getDate(){
 		isLeap();
 		int sum = 0;
-		for(int i = 0;i < 12; i++){
+		for(int i = 0;i < 13; i++){
 			sum += arr[i + leap];
 			if(days - sum >= 0 && days - sum <= arr[i + leap+1]){
 				System.out.println(years+"年的第 "+days+"天是 "+ (i+1) + "月 " + (days-sum) +"日");
@@ -50,7 +50,7 @@ public class DayCalculate {
 	public void getDays(){
 		isLeap();
 		int sum = 0;
-		for(int i = 0; i < mon-1; i++){
+		for(int i = 0; i < mon; i++){
 			sum += arr[i+leap];
 		}
 		System.out.println(years+"年 "+mon+"月 "+days+"日是第 "+(sum+days)+"天");
@@ -58,10 +58,10 @@ public class DayCalculate {
 	
 	public static void main(String[] args) {
 		DayCalculate d = new DayCalculate();
-		d.setDay(2008, 32);
+		d.setDay(2008, 366);
 		d.getDate();
 		
-		d.setDate(1998, 7, 30);
+		d.setDate(2007, 1, 2);
 		d.getDays();
 	}
 }
