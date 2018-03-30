@@ -10,14 +10,14 @@ public class DayCalculate {
 		mon = 0;
 		// 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 
 		// 0  闰年							 1   平年
-		arr = new int[]{0,31,29,31,30,31,30,31,31,30,31,30,1,31,28,31,30,31,30,31,31,30,31,30,31};
+		arr = new int[]{0,31,29,31,30,31,30,31,31,30,31,30,0,31,28,31,30,31,30,31,31,30,31,30,31};
 	}
 	
 	public void isLeap(){
 		if((years % 4 == 0 && years % 100 != 0)||(years % 400 == 0))
-			leap = 1;
+			leap = 0;
 		else 
-			leap = 14;
+			leap = 13;
 	}
 	
 	//设置第几天
@@ -39,7 +39,7 @@ public class DayCalculate {
 		int sum = 0;
 		for(int i = 0;i < 12; i++){
 			sum += arr[i + leap];
-			if(days - sum > 0 && days - sum <= arr[i + leap+1]){
+			if(days - sum >= 0 && days - sum <= arr[i + leap+1]){
 				System.out.println(years+"年的第 "+days+"天是 "+ (i+1) + "月 " + (days-sum) +"日");
 				break;
 			}
@@ -61,7 +61,7 @@ public class DayCalculate {
 		d.setDay(2008, 32);
 		d.getDate();
 		
-		d.setDate(2009, 3, 1);
+		d.setDate(1998, 7, 30);
 		d.getDays();
 	}
 }
